@@ -1,0 +1,43 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <table align="center" border="2">
+        <tr bgcolor="#adff2f">
+            <th width="100">IDNO</th>
+            <th width="200">NAME</th>
+            <th width="150">SALARY</th>
+            <th width="100">UPDATE</th>
+            <th width="100">DELETE</th>
+        </tr>
+
+        {% for x in data %}
+            <tr>
+            <th width="100">{{ x.id }}</th>
+            <th width="200">{{ x.name }}</th>
+            <th width="150">{{ x.salary }}</th>
+            <th width="100">
+
+                <a href="{% url 'update' %}?update_id={{ x.id }}">
+                    <img src="{% static 'images/emp.png' %}">
+                </a>
+            </th>
+            <th width="100">
+
+
+                <form action="{% url 'delete' %}" method="post">
+                    {% csrf_token %}
+                <input type="hidden" name="del_idno" value="{{ x.id }}">
+                <button type="submit">Delete</button>
+                </form>
+            </th>
+        </tr>
+        {% endfor %}
+
+    </table>

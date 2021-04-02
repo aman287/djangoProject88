@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'register' %}">Register a Employee</a><br></br>
+<a href="{% url 'viewall' %}">View all Employee</a>
+{% if message %}
+{{ message }}
+{% endif %}
+</body>
+</html>
